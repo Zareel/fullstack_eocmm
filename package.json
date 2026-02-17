@@ -1,0 +1,23 @@
+{
+  "name": "backed-app",
+  "version": "2.0.0",
+  "description": "This is my fisrt backend project",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "mongodb",
+    "nodemon",
+    "mongoose"
+  ],
+  "author": "Zareel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
