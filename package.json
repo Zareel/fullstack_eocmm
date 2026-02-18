@@ -17,8 +17,10 @@
   "author": "Zareel",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "mongoose": "^9.2.1",
     "nodemon": "^3.1.11"
   }
 }
