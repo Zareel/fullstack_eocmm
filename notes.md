@@ -15,7 +15,7 @@ HTTP Status code => The digits num db sends back to the in response to the clien
 100 => continue
 102 => proceeding
 
-200 => OK
+200 => OK/ success
 201 => Created 
 202 => accepted
 
