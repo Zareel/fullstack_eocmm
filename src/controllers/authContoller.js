@@ -93,6 +93,9 @@ export const login = async (req, res) => {
     }
     // if user exist compare the password
     const isPasswordMatched = await user.comparePassword(password);
+    //const isPasswordMatched = await password.compare(password, user.password)
+
+
     // if password doesnt match send response
     if (!isPasswordMatched) {
       return res.status(400).json({
