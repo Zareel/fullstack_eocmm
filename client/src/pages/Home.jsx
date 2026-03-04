@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 const Home = () => {
   return (
-    <div className='min-h-screen bg-stone-200'>
+    <div className='min-h-screen bg-stone-900'>
         <Helmet>
             <title>MarqueZ-Home</title>
         </Helmet>
