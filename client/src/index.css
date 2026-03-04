@@ -2,13 +2,13 @@
 @import "tailwindcss";
 
 @theme {
-  --font-inter:'Cedarville Cursive', 'cursive'
+  --font-cursive:'Cedarville Cursive', 'cursive'
 }
 
 @theme {
-  --font-inter:'Poppins', 'sans-serif'
+  --font-poppins:'Poppins', 'sans-serif'
 }
 
 @theme {
-  --font-inter:'Montserrat', 'sans-serif'
+  --font-mont:'Montserrat', 'sans-serif'
 }

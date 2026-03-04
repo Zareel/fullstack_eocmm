@@ -1,11 +1,29 @@
-
+import { Routes, Route } from "react-router-dom"
+import Layout from "./components/Layout/Layout"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Collection from "./pages/Collection"
+import Products from "./pages/Products"
+import Login from "./pages/Login"
+import SignUp from "./pages/SignUp"
+import PageNotFound from "./pages/PageNotFound"
 
 function App() {
   
 
   return (
     <div>
-      <h1 className="text-5xl text-red-500 font-bold">Hello</h1>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/collection" element={<Collection/>}/>
+          <Route path="/products" element={<Products/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="*" element={<PageNotFound/>}/>
+        </Route>
+      </Routes>
     </div>
   )
 }
