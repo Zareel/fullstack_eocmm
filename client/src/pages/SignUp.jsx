@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,6 +14,7 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate()
 
   // handle submit
   const handleSubmit = async (e) => {
@@ -21,11 +24,17 @@ const SignUp = () => {
         "http://localhost:4000/api/v1/auth/signup",
         { name, email, password, phone, address, role },
       );
-      console.log(data);
-      alert(data);
+      // console.log(data);
+    if(data && data.success){
+      toast.success(data && data.message)
+      navigate("/login")
+    }else{
+      toast.error(data && data.message)
+    }
+      
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong");
+      // console.log(error);
+      toast.error("Something went wrong");
     }
   };
 

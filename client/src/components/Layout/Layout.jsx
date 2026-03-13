@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import { Helmet } from "react-helmet";
-
+import { Toaster } from 'sonner';
 
 const Layout = ({ title, description, keywords, author }) => {
   return (
@@ -20,7 +20,11 @@ const Layout = ({ title, description, keywords, author }) => {
 
       <Navbar />
       <main className="min-h-[70vh]">
-       
+       <Toaster position="top-right" richColors toastOptions={{
+        style:{
+          width:"300px"
+        }
+       }}/>
         <Outlet />
       </main>
       <Footer />

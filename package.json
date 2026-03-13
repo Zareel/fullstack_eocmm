@@ -5,7 +5,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js"
+   "backend": "nodemon server.js",
+    "frontend": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "keywords": [
     "nodejs",
@@ -19,6 +21,7 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "colors": "^1.4.0",
+    "concurrently": "^9.2.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "crypto": "^1.0.1",
