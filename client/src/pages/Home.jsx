@@ -6,7 +6,7 @@ import AuthContext from '../context/AuthContext'
 const Home = () => {
   const {auth, setAuth} = useContext(AuthContext)
   return (
-    <div className='min-h-screen bg-stone-900 px-18 text-white text-2xl'>
+    <div className='min-h-screen bg-stone-900 px-18  text-lg text-cyan-300'>
         <Helmet>
             <title>MarqueZ-Home</title>
         </Helmet>

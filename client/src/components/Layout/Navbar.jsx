@@ -1,11 +1,36 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { toast } from "sonner";
+import AuthContext from "../../context/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {auth, setAuth} = useContext(AuthContext)
+
+  // logout
+  const handleLogout = async()=>{
+    try{
+      const {data} = await axios.post("http://localhost:4000/api/v1/auth/logout")
+      if(data.success){
+        toast.success(data.message)
+        setAuth({
+          ...auth,
+          user:null,
+          token:""
+        })
+        localStorage.removeItem("auth")
+
+      }
+
+    }catch(error){
+      console.log(error)
+      toast.error(`Something went wrong while logging out`)
+    }
+  }
 
   return (
-    <nav className="bg-gradient-to-r from-[#A7A7DB] to-stone-400 shadow-md ">
+    <nav className="bg-linear-to-r from-[#A7A7DB] to-stone-400 shadow-md ">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center justify-center  w-12 h-12 rounded-full dark:bg-purple-600">
@@ -54,6 +79,7 @@ const Navbar = () => {
           >
             Signup
           </NavLink>
+          <NavLink onClick={handleLogout}>LogOut </NavLink>
         </ul>
 
         {/* Mobile Menu Button */}
