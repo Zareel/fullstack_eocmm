@@ -8,7 +8,7 @@ import slugify from "slugify";
 export const getAllCollection = async (req, res) => {
   try {
     const collection = await Collection.find();
-    if (!collection) {
+    if (collection.length === 0) {
       return res.status(404).json({
         success: false,
         message: "Collections not found",
