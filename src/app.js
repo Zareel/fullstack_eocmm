@@ -6,6 +6,7 @@ import crypto from "crypto"
 import authRoutes from "./routes/authRoutes.js"
 import collectionRoutes from "./routes/collectionRoutes.js"
 
+
 const app = express()
 
 // middlewares
