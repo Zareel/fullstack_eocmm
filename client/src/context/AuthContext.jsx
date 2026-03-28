@@ -1,4 +1,5 @@
 import { useState,useEffect, createContext } from "react";
+import axios from "axios";
 
 
 const AuthContext = createContext()
@@ -8,6 +9,9 @@ export const AuthContextProvider = ({children}) => {
         user:null,
         token:""
     })
+
+    // default axios
+    axios.defaults.headers.common["Authentication"] = auth?.token
 
     // local storage
     useEffect(() =>{
@@ -23,6 +27,7 @@ export const AuthContextProvider = ({children}) => {
         // eslint-disable-next-line
     } ,[])
 
+    useEffect(() => {})
     
     return(
         <AuthContext.Provider value={{auth, setAuth}}>{children}</AuthContext.Provider>

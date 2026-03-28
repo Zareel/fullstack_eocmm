@@ -7,6 +7,9 @@ import Products from "./pages/Products"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
 import PageNotFound from "./pages/PageNotFound"
+import UDashboard from "./pages/user/UDashboard"
+import PrivateRoute from "./components/Routes/PrivateRoute"
+
 
 function App() {
   
@@ -16,6 +19,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home/>}/>
+          <Route path="/dashboard" element={<PrivateRoute/>}>
+            <Route path="" element={<UDashboard/>}/>
+          </Route>
+          
           <Route path="/about" element={<About/>}/>
           <Route path="/collection" element={<Collection/>}/>
           <Route path="/products" element={<Products/>}/>
