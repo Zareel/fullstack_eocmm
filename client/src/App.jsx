@@ -9,6 +9,8 @@ import SignUp from "./pages/SignUp"
 import PageNotFound from "./pages/PageNotFound"
 import UDashboard from "./pages/user/UDashboard"
 import PrivateRoute from "./components/Routes/PrivateRoute"
+import AdminRoute from "./components/Routes/AdminRoute"
+import AdminDashboard from "./pages/admin/AdminDashboard"
 
 
 function App() {
@@ -20,7 +22,12 @@ function App() {
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path="/dashboard" element={<PrivateRoute/>}>
-            <Route path="" element={<UDashboard/>}/>
+            <Route path="user" element={<UDashboard/>}/>
+          </Route>
+
+          <Route path="/dashboard" element={<AdminRoute/>}>
+            <Route path="admin" element={<AdminDashboard/>}/>
+
           </Route>
           
           <Route path="/about" element={<About/>}/>

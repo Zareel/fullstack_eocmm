@@ -6,9 +6,7 @@ import Loader from "../Loader";
 
 const PrivateRoute = () => {
   const [ok, setOk] = useState(false);
-
   const { auth } = useContext(AuthContext);
-
   useEffect(() => {
     const authCheck = async () => {
       try {
@@ -20,14 +18,11 @@ const PrivateRoute = () => {
     };
 
     if (auth?.token) authCheck();
-      
-    
     console.log("TOKEN:", auth.token);
   }, [auth?.token]);
 
   return ok ? <Outlet /> : <Loader />;
 };
-
 export default PrivateRoute;
 
 // import { useState, useEffect,useContext } from "react";

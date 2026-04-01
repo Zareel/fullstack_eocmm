@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
-
 const Login = () => {
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")

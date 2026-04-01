@@ -8,7 +8,7 @@ const Loader = () => {
 
  useEffect(() => {
     const interval = setInterval(() => {
-      setCount((prevValue) => --prevValue);
+      setCount((prev) => --prev);
     }, 1000);
     count === 0 &&
       navigate("/login", {

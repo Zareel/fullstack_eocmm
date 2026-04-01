@@ -15,7 +15,7 @@ export const AuthContextProvider = ({children}) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${auth.token}`;
 
     // baseUrl
-    // axios.defaults.baseURL = "http://localhost:4000";
+    //axios.defaults.baseURL = "http://localhost:4000";
     
 
     // local storage

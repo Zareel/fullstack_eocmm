@@ -70,7 +70,7 @@ const Navbar = () => {
                 
                 <MenuItem>
                   {({ isActive }) => (
-                    <NavLink to="/dashboard"
+                    <NavLink to={`/dashboard/${auth.user.role === "admin" ? "admin" : "user"}`}
                      
                       className={`block w-full text-left px-4 py-2 text-sm ${
                         isActive ? "bg-white/10 text-white" : "text-gray-300"
