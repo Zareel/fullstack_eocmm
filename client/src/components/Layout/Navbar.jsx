@@ -60,7 +60,7 @@ const Navbar = () => {
             
             {/* Button */}
             <MenuButton className="inline-flex items-center gap-2 rounded-md bg-white/10 px-4 py-2 border-none outline-none">
-              {"Hey" + " " + auth.user.name || "User"}
+              {"Hay" + " " + auth.user.name || "User"}
               <ChevronDownIcon className="size-5 text-gray-300" />
             </MenuButton>
 
@@ -69,24 +69,24 @@ const Navbar = () => {
               <div className="py-1 mt-6">
                 
                 <MenuItem>
-                  {({ active }) => (
-                    <button
-                      onClick={() => navigate("/dashboard")}
+                  {({ isActive }) => (
+                    <NavLink to="/dashboard"
+                     
                       className={`block w-full text-left px-4 py-2 text-sm ${
-                        active ? "bg-white/10 text-white" : "text-gray-300"
+                        isActive ? "bg-white/10 text-white" : "text-gray-300"
                       }`}
                     >
                       Dashboard
-                    </button>
+                    </NavLink>
                   )}
                 </MenuItem>
 
                 <MenuItem>
-                  {({ active }) => (
+                  {({ isActive }) => (
                     <button
                       onClick={() => navigate("/profile")}
                       className={`block w-full text-left px-4 py-2 text-sm ${
-                        active ? "bg-white/10 text-white" : "text-gray-300"
+                        isActive ? "bg-white/10 text-white" : "text-gray-300"
                       }`}
                     >
                       Profile
@@ -94,7 +94,18 @@ const Navbar = () => {
                   )}
                 </MenuItem>
 
-                
+                <MenuItem>
+                  {({ isActive }) => (
+                    <NavLink to="/"
+                      onClick={handleLogout}
+                      className={`block w-full text-left px-4 py-2 text-sm ${
+                        isActive ? "bg-white/10 text-red-400" : "text-red-300"
+                      }`}
+                    >
+                      Logout
+                    </NavLink>
+                  )}
+                </MenuItem>
 
               </div>
             </MenuItems>
@@ -121,7 +132,7 @@ const Navbar = () => {
               >
                 Products
               </NavLink>
-              <NavLink onClick={handleLogout}>LogOut </NavLink>
+            
             </div>
           ) : (
             <div className="flex gap-6 items-center justify-center w-full mr-20">

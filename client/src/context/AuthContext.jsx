@@ -11,7 +11,12 @@ export const AuthContextProvider = ({children}) => {
     })
 
     // default axios
-    axios.defaults.headers.common["Authorization"] = auth?.token
+    // axios.defaults.headers.common["Authorization"] = auth?.token
+    axios.defaults.headers.common["Authorization"] = `Bearer ${auth.token}`;
+
+    // baseUrl
+    // axios.defaults.baseURL = "http://localhost:4000";
+    
 
     // local storage
     useEffect(() =>{

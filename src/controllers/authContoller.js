@@ -3,10 +3,7 @@ import JWT from "jsonwebtoken";
 import config from "../config/config.js";
 
 
-export const cookieOptions = {
-  expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-  httpOnly: true,
-};
+
 
 // signUP
 
@@ -51,7 +48,9 @@ export const signup = async (req, res) => {
     user.password = undefined;
 
     // set up cookies
-    res.cookie("token", token, cookieOptions);
+    res.cookie("token", token, {
+  httpOnly: true,
+});
 
     // if ok, send success response to the frontend
     res.status(201).json({
@@ -112,7 +111,9 @@ export const login = async (req, res) => {
     // flush out password
     user.password = undefined;
     // set up cookie
-    res.cookie("token", token, cookieOptions);
+    res.cookie("token", token, {
+  httpOnly: true,
+});
     // send success msg
     res.status(200).json({
       success: true,

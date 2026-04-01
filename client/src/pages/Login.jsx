@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     //  console.log("working")
     try{
-      const {data} = await axios.post("http://localhost:4000/api/v1/auth/login", {email, password})
+      const {data} = await axios.post("/api/v1/auth/login", {email, password})
       if(data && data.success){
         toast.success(data.message)
         setAuth({
@@ -27,8 +27,7 @@ const Login = () => {
           token:data.token
         })
         localStorage.setItem("auth", JSON.stringify(data))
-       
-        navigate("/");
+        navigate(location.state || "/");
       }else{
         toast.error(data.message)
       }

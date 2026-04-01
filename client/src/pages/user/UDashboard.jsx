@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 const UDashboard = () => {
   return (
-    <div>
+    <div className='min-h-screen bg-stone-900'>
         <Helmet>
             <title>User Dashboard</title>
         </Helmet>
