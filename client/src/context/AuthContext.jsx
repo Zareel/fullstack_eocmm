@@ -11,7 +11,7 @@ export const AuthContextProvider = ({children}) => {
     })
 
     // default axios
-    axios.defaults.headers.common["Authentication"] = auth?.token
+    axios.defaults.headers.common["Authorization"] = auth?.token
 
     // local storage
     useEffect(() =>{
@@ -19,7 +19,6 @@ export const AuthContextProvider = ({children}) => {
         if(data){
             const parseData = JSON.parse(data)
             setAuth({
-                ...auth,
                 user:parseData.user,
                 token:parseData.token
             })

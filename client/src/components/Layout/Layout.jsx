@@ -20,7 +20,7 @@ const Layout = ({ title, description, keywords, author }) => {
 
       <Navbar />
       <main className="min-h-[70vh]">
-       <Toaster position="top-right" richColors toastOptions={{
+       <Toaster position="bottom-right" richColors toastOptions={{
         style:{
           width:"300px"
         }

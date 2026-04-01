@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { Helmet } from 'react-helmet'
 import AuthContext from '../context/AuthContext'
+import Dropdown from '../components/Dropdown'
 
 
 const Home = () => {

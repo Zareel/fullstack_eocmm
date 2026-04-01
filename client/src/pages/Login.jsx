@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useContext } from "react";
 import { Helmet } from "react-helmet";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 
@@ -10,6 +10,7 @@ const Login = () => {
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
   const navigate = useNavigate()
+  const location = useLocation()
   const{auth, setAuth} = useContext(AuthContext)
 
   // login
@@ -26,7 +27,8 @@ const Login = () => {
           token:data.token
         })
         localStorage.setItem("auth", JSON.stringify(data))
-        navigate("/")
+       
+        navigate("/");
       }else{
         toast.error(data.message)
       }
