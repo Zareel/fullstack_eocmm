@@ -65,7 +65,7 @@ const Navbar = () => {
             </MenuButton>
 
             {/* Dropdown */}
-            <MenuItems className="absolute border-none outline-none">
+            <MenuItems className="absolute border-none outline-none ">
               <div className="py-1 mt-6">
                 
                 <MenuItem>

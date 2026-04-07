@@ -21,7 +21,7 @@ const PrivateRoute = () => {
     console.log("TOKEN:", auth.token);
   }, [auth?.token]);
 
-  return ok ? <Outlet /> : <Loader />;
+  return ok ? <Outlet /> : <Loader/>;
 };
 export default PrivateRoute;
 
