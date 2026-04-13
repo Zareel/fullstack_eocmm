@@ -1,7 +1,6 @@
 import React from "react";
 
-const CollectionForm = ({ handleSubmit, value, setValue, handleOk }) => {
- 
+const CollectionForm = ({ handleSubmit, value, setValue }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex gap-6 mb-10">

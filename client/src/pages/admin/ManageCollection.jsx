@@ -86,15 +86,19 @@ const ManageCollection = () => {
     e.preventDefault();
     try {
       // console.log(e);
-      const {data} = await axios.put(`/api/v1/collection/update-collection/${selected._id}`, {name:updatedName})
-      if(data.success){
-        toast.success(data.message)
-        setSelected(null)
-        setUpdatedName("")
-        showModal(false)
+      const { data } = await axios.put(
+        `/api/v1/collection/update-collection/${selected._id}`,
+        { name: updatedName },
+      );
+      if (data.success) {
+        toast.success(data.message);
+        setSelected(null);
+        setUpdatedName("");
+        showModal(false);
+        setIsModalOpen(false);
         getCollection();
-      }else{
-        toast.error(data.message)
+      } else {
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
@@ -112,7 +116,6 @@ const ManageCollection = () => {
         handleSubmit={createCollection}
         value={name}
         setValue={setName}
-        handleOk= {handleOk}
       />
 
       <table className="w-full border border-gray-700 text-left">
@@ -146,7 +149,7 @@ const ManageCollection = () => {
                   onClick={() => {
                     showModal();
                     setUpdatedName(item.name);
-                    setSelected(item)
+                    setSelected(item);
                   }}
                 >
                   <EditIcon />
@@ -158,7 +161,6 @@ const ManageCollection = () => {
       </table>
       <Modal
         title="Collection"
-       
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
