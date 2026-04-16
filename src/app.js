@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import crypto from "crypto"
 import authRoutes from "./routes/authRoutes.js"
 import collectionRoutes from "./routes/collectionRoutes.js"
+import productRoutes from "./routes/productRoute.js"
 
 
 const app = express()
@@ -19,6 +20,7 @@ app.use(cookieParser()) //it allow the server to access cookie
 // routes
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/collection", collectionRoutes)
+app.use("/api/v1/product", productRoutes)
 
 // crypto key
 /*
