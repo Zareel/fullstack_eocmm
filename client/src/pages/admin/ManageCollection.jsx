@@ -109,7 +109,7 @@ const ManageCollection = () => {
   return (
     <div>
       <h1 className="text-5xl text-cyan-300 font-bold pb-10">
-        Manage Collection{" "}
+        Manage Collection
       </h1>
 
       <CollectionForm

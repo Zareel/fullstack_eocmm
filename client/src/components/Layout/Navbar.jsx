@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import AuthContext from "../../context/AuthContext";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { auth, setAuth } = useContext(AuthContext);
   const [userMenu, setUserMenu] = useState(false);
+  const navigate = useNavigate()
 
   // logout
   const handleLogout = async () => {

@@ -14,14 +14,12 @@ import AdminRoute from "./components/Routes/AdminRoute";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import WishList from "./pages/user/WishList";
 import Orders from "./pages/user/Orders";
-
 import AdminLayout from "./components/Layout/AdminLayout";
-
 import Users from "./pages/admin/Users";
-
 import ManageCollection from "./pages/admin/ManageCollection";
 import ManageProducts from "./pages/admin/ManageProducts";
-
+import AdminProducts from "./pages/admin/AdminProducts";
+import UpdateProduct from "./pages/admin/UpdateProduct";
 function App() {
   return (
     <div>
@@ -46,6 +44,8 @@ function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="manage-collection" element={<ManageCollection />} />
               <Route path="manage-product" element={<ManageProducts />} />
+              <Route path="product/:slug" element={<UpdateProduct />} />
+              <Route path="products" element={<AdminProducts />} />
               <Route path="users" element={<Users />} />
             </Route>
           </Route>

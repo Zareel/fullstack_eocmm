@@ -5,8 +5,8 @@ import AuthContext from "../../context/AuthContext";
 const AdminLayout = () => {
 	const {auth} = useContext(AuthContext)
   return (
-    <div className="bg-stone-900 text-stone-300 min h-screen flex text-lg ">
-      <div className="h-full p-3  bg-stone-950 w-1/5 pl-6">
+    <div className="bg-stone-900 text-stone-300 min min-h-screen flex text-lg ">
+      <div className="h-full p-3   w-1/5 pl-6">
         <div className="flex items-center p-2 space-x-4">
           <img
             src="https://source.unsplash.com/100x100/?portrait"
@@ -39,6 +39,9 @@ const AdminLayout = () => {
             </NavLink>
             <NavLink to="/dashboard/admin/manage-product" className="pl-7 hover:text-white text-lg">
               Manage Product
+            </NavLink>
+            <NavLink to="/dashboard/admin/products" className="pl-7 hover:text-white text-lg">
+              Products
             </NavLink>
             <NavLink to="/dashboard/admin/users" className="pl-7 hover:text-white text-lg">
               Users

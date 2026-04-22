@@ -19,15 +19,19 @@ const Layout = ({ title, description, keywords, author }) => {
       </Helmet>
 
       <Navbar />
-      <main className="min-h-[70vh]">
-       <Toaster position="bottom-right" richColors toastOptions={{
+      <main className=" ">
+     
+       <div className="min-h-screen">
+         <Outlet />
+       </div>
+       
+      </main>
+      <Footer />
+        <Toaster position="bottom-right" richColors toastOptions={{
         style:{
           width:"300px"
         }
        }}/>
-        <Outlet />
-      </main>
-      <Footer />
     </div>
   );
 };
