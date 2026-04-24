@@ -30,7 +30,6 @@ function App() {
           {/* user protected route */}
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="user" element={<UserLayout />}>
-             
               <Route index element={<UDashboard />} />
               <Route path="user/wishlist" element={<WishList />} />
               <Route path="user/orders" element={<Orders />} />

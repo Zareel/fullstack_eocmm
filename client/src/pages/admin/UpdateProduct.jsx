@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Select } from "antd";
 const { Option } = Select;
 
@@ -14,7 +14,9 @@ const UpdateProduct = () => {
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState(false);
   const [photo, setPhoto] = useState("");
+  const [id, setId] = useState("");
   const navigate = useNavigate();
+  const params = useParams();
 
   // get Collection
   const getCollection = async () => {
@@ -35,18 +37,19 @@ const UpdateProduct = () => {
   }, []);
 
   // create Product
-  const createProduct = async (e) => {
+  const updateProduct = async (e) => {
     try {
       e.preventDefault();
       const productData = new FormData();
       productData.append("name", name);
       productData.append("description", description);
-      productData.append("price", price);
       productData.append("collection", collection);
+      productData.append("price", price);
+      productData.append("shipping", shipping)
       productData.append("quantity", quantity);
-      productData.append("photo", photo);
-      const { data } = await axios.post(
-        "/api/v1/product/create-product",
+      photo && productData.append("photo", photo);
+      const { data } = await axios.put(
+        `http://localhost:4000/api/v1/product/update-product/${id}`,
         productData,
       );
       if (data?.success) {
@@ -57,13 +60,38 @@ const UpdateProduct = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong while creating the product");
+      toast.error("Something went wrong while updating the product");
     }
   };
+
+  // get single product
+  const getSingleProduct = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:4000/api/v1/product/single-product/${params.slug}`,
+      );
+      // console.log(data);
+      setName(data?.product?.name);
+      setDescription(data?.product?.description);
+      setPrice(data?.product?.price);
+      setQuantity(data?.product?.quantity);
+      setShipping(data?.product.shipping);
+      setCollection(data?.product?.collection?._id);
+      setId(data?.product?._id)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSingleProduct();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="min-h-screen">
       <h1 className="text-5xl text-cyan-300 font-bold">Update Products</h1>
-      <form onSubmit={createProduct}>
+      <form onSubmit={updateProduct}>
         <div className="my-6">
           <Select
             placeholder="Select a collection"
@@ -100,10 +128,18 @@ const UpdateProduct = () => {
           </label>
         </div>
         <div className="my-6">
-          {photo && (
+          {photo ? (
             <div>
               <img
                 src={URL.createObjectURL(photo)}
+                alt="product-photo"
+                className="w-64"
+              />
+            </div>
+          ) : (
+            <div>
+              <img
+                src={`/api/v1/product/product-photo/${id}`}
                 alt="product-photo"
                 className="w-64"
               />
@@ -163,6 +199,7 @@ const UpdateProduct = () => {
               size="large"
               placeholder="Select Shipping"
               onChange={(value) => setShipping(value)}
+              value={shipping ? "Yes" : "No"}
             >
               <Option value={true}>Yes</Option>
               <Option value={false}>No</Option>

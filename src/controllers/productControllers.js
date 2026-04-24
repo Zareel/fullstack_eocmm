@@ -119,7 +119,7 @@ export const singleProduct = async (req, res) => {
 // get photo
 export const productPhoto = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.pid).select("photo");
+    const product = await Product.findById(req.params.id).select("photo");
     if (product.photo.data) {
       res.set("Content-type", product.photo.contentType);
       return res.status(200).send(product.photo.data);
@@ -137,7 +137,7 @@ export const productPhoto = async (req, res) => {
 // delete product
 export const deleteProduct = async (req, res) => {
   try {
-    await Product.findByIdAndDelete(req.params.pid).select("-photo");
+    await Product.findByIdAndDelete(req.params.id).select("-photo");
     res.status(200).json({
       success: true,
       message: "Product has been deleted successfully",
@@ -153,6 +153,7 @@ export const deleteProduct = async (req, res) => {
 };
 
 // update product
+
 export const updateProduct = async (req, res) => {
   try {
     const { name, description, price, collection, quantity } = req.fields;
@@ -167,31 +168,29 @@ export const updateProduct = async (req, res) => {
     }
 
     // photo validatin
-    if (!photo || photo.size > 1000000) {
+    if (photo && photo.size > 1000000) {
       return res.status(400).json({
         success: false,
-        message: "photo is required",
+        message: "Photo should be less than 1MB",
       });
     }
 
- 
-
     const product = await Product.findByIdAndUpdate(
-      req.params.pid,
+      req.params.id,
       { ...req.fields, slug: slugify(name) },
       { new: true },
     );
     // handle photo
-    if(photo){
+    if (photo) {
       product.photo.data = fs.readFileSync(photo.path);
-      product.photo.contentType = photo.type
+      product.photo.contentType = photo.type;
     }
     await product.save();
     res.status(201).json({
-      success:true,
-      message:"Product has been updated successfully",
-      product
-    })
+      success: true,
+      message: "Product has been updated successfully",
+      product,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
