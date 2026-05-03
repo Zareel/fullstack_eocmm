@@ -20,6 +20,7 @@ import ManageCollection from "./pages/admin/ManageCollection";
 import ManageProducts from "./pages/admin/ManageProducts";
 import AdminProducts from "./pages/admin/AdminProducts";
 import UpdateProduct from "./pages/admin/UpdateProduct";
+import Cart from "./pages/user/Cart";
 function App() {
   return (
     <div>
@@ -31,8 +32,9 @@ function App() {
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="user" element={<UserLayout />}>
               <Route index element={<UDashboard />} />
-              <Route path="user/wishlist" element={<WishList />} />
-              <Route path="user/orders" element={<Orders />} />
+              <Route path="wishlist" element={<WishList />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="cart" element={<Cart />} />
            
           </Route>
           </Route>

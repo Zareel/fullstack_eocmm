@@ -3,14 +3,17 @@ import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import AuthContext from "../../context/AuthContext";
+import CartContext from "../../context/CartContex";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { auth, setAuth } = useContext(AuthContext);
+  const [cart, setCart] = useContext(CartContext)
   const [userMenu, setUserMenu] = useState(false);
   const navigate = useNavigate()
+  console.log(cart?.length)
 
   // logout
   const handleLogout = async () => {
@@ -132,6 +135,12 @@ const Navbar = () => {
                 className="hover:text-indigo-600 transition duration-300"
               >
                 Products
+              </NavLink>
+              <NavLink
+                to="dashboard/user/cart"
+                className="hover:text-indigo-600 transition duration-300"
+              >
+                Cart {cart?.length}
               </NavLink>
             
             </div>

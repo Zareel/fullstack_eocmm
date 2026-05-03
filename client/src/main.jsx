@@ -5,11 +5,14 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "sonner/dist/styles.css";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
+import { CartContextProvider } from "./context/CartContex.jsx";
 
 createRoot(document.getElementById("root")).render(
   <AuthContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CartContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CartContextProvider>
   </AuthContextProvider>,
 );
